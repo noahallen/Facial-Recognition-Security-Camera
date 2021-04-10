@@ -78,7 +78,7 @@ while True:
 			elif prev_name[name] >= 6:
 				prev_name = 0
 				print(name)
-			else: prev_name += 1
+			else: prev_name[name] += 1
 		
 		# update the list of names
 		names.append(name)

@@ -76,7 +76,7 @@ while True:
 			if name not in prev_name: 
 				prev_name[name] = 0
 			elif prev_name[name] >= 6:
-				prev_name = 0
+				prev_name[name] = 0
 				print(name)
 			else: prev_name[name] += 1
 		

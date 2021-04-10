@@ -27,7 +27,8 @@ vs = VideoStream(src=0).start()
 time.sleep(2.0)
 # start the FPS counter
 fps = FPS().start()
-
+face_count = 0
+prev_name = ""
  #loop over frames from the video file stream
 while True:
 	# grab the frame from the threaded video stream and resize it
@@ -72,6 +73,11 @@ while True:
 			# of votes (note: in the event of an unlikely tie Python
 			# will select first entry in the dictionary)
 			name = max(counts, key=counts.get)
+			if prev_name == name: face_count += 1
+			elif face_count >= 6:
+				face_count = 0
+				print(name)
+			else: prev_name = name
 		
 		# update the list of names
 		names.append(name)

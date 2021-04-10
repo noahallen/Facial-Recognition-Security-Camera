@@ -1,3 +1,9 @@
+# USAGE
+# When encoding on laptop, desktop, or GPU (slower, more accurate):
+# python encode_faces.py --dataset dataset --encodings encodings.pickle --detection-method cnn
+# When encoding on Raspberry Pi (faster, more accurate):
+# python encode_faces.py --dataset dataset --encodings encodings.pickle --detection-method hog
+
 # import the necessary packages
 from imutils import paths
 import face_recognition
@@ -5,6 +11,7 @@ import argparse
 import pickle
 import cv2
 import os
+
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--dataset", required=True,
@@ -18,6 +25,7 @@ args = vars(ap.parse_args())
 # grab the paths to the input images in our dataset
 print("[INFO] quantifying faces...")
 imagePaths = list(paths.list_images(args["dataset"]))
+
 # initialize the list of known encodings and known names
 knownEncodings = []
 knownNames = []
@@ -28,16 +36,20 @@ for (i, imagePath) in enumerate(imagePaths):
 	print("[INFO] processing image {}/{}".format(i + 1,
 		len(imagePaths)))
 	name = imagePath.split(os.path.sep)[-2]
-	# load the input image and convert it from BGR (OpenCV ordering)
+
+	# load the input image and convert it from RGB (OpenCV ordering)
 	# to dlib ordering (RGB)
 	image = cv2.imread(imagePath)
 	rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
 	# detect the (x, y)-coordinates of the bounding boxes
 	# corresponding to each face in the input image
 	boxes = face_recognition.face_locations(rgb,
 		model=args["detection_method"])
+
 	# compute the facial embedding for the face
 	encodings = face_recognition.face_encodings(rgb, boxes)
+
 	# loop over the encodings
 	for encoding in encodings:
 		# add each encoding + name to our set of known names and

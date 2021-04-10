@@ -28,7 +28,7 @@ time.sleep(2.0)
 # start the FPS counter
 fps = FPS().start()
 
- loop over frames from the video file stream
+ #loop over frames from the video file stream
 while True:
 	# grab the frame from the threaded video stream and resize it
 	# to 500px (to speedup processing)

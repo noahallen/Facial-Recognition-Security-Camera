@@ -80,7 +80,8 @@ while True:
 				prev_name[name] = 0
 			elif prev_name[name] >= 6:
 				prev_name[name] = 0
-				print("{}, {}".format(name, datetime.now()))
+				cv2.imwrite("img/{}-{}}.png".format(datetime.now(),name), frame)
+				print("{}, {}".format(datetime.now(), name))
 			else: prev_name[name] += 1
 		
 		# update the list of names

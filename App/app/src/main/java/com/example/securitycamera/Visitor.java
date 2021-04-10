@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class Visitor {
     private String name;
     private String time;
+    //private String img;
+
+    public Visitor(){
+
+    }
 
     public Visitor(String name, String time){
         this.name = name;
@@ -15,8 +20,16 @@ public class Visitor {
         return name;
     }
 
+    public void setName(String name){
+        this.name =name;
+    }
+
     public String getTime(){
         return time;
+    }
+
+    public void setTime(String time){
+        this.time = time;
     }
 
     public static ArrayList<Visitor> getVisitors(){

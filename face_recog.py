@@ -7,6 +7,9 @@ import imutils
 import pickle
 import time
 import cv2
+from datetime import datetime
+
+
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-c", "--cascade", required=True,
@@ -77,7 +80,7 @@ while True:
 				prev_name[name] = 0
 			elif prev_name[name] >= 6:
 				prev_name[name] = 0
-				print(name)
+				print("{}, {}".format(name, datetime.now()))
 			else: prev_name[name] += 1
 		
 		# update the list of names

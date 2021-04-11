@@ -101,7 +101,7 @@ while True:
 				cv2.imwrite("img/{}-{}.png".format(date,name), frame)
 				
 				time = time
-				logger.info("PERSON FOUND: {} - DATE: {}").format(path_local) print("{}, {}".format(name, date))
+				logger.info("PERSON FOUND: {} - DATE: {}").format(name,date)
 			else: prev_name[name] += 1
 		
 		# update the list of names

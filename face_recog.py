@@ -90,7 +90,7 @@ while True:
 				name = "Unknown"
 			if name not in prev_name: 
 				prev_name[name] = 0
-			elif prev_name[name] >= 6 and (0 - ppl[name]) > 60:
+			elif prev_name[name] >= 6 and (float(str(fps.elapsed())) - ppl[name]) > 60:
 				prev_name[name] = 0
 				date = str(datetime.now())[:-10]
 				cv2.imwrite("img/{}-{}.png".format(date,name), frame)

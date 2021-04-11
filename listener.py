@@ -3,6 +3,7 @@ import pyrebase
 import time
 import os
 
+DIRECTORY = 'img/'
 config = {
     "apiKey": "AIzaSyBq1xCymVdKC2LI6EvDaavMOCW_bFfABow",
     "authDomain": "ss-facialrecognition.firebaseapp.com",
@@ -21,9 +22,9 @@ storage = firebase.storage()
 while(True):
     if (time.time() - t) > 1:
         t = time.time()
-        for filename in os.listdir(directory):
+        for filename in os.listdir(DIRECTORY):
             if filename.endswith(".jpg") or filename.endswith(".png"):
-                path_on_cloud = (os.path.join(directory, filename))
+                path_on_cloud = (os.path.join(DIRECTORY, filename))
                 path_local = path_on_cloud
                 storage.child(path_on_cloud).put(path_local)
 

@@ -32,7 +32,7 @@ time.sleep(2.0)
 fps = FPS().start()
 face_count = 0
 prev_name = {}
-print(data)
+print(set(data['names']))
 
  #loop over frames from the video file stream
 while True:

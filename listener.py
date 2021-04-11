@@ -1,5 +1,6 @@
 
 import pyrebase
+import time
 
 config = {
     "apiKey": "AIzaSyBq1xCymVdKC2LI6EvDaavMOCW_bFfABow",
@@ -14,12 +15,21 @@ config = {
 
 firebase = pyrebase.initialize_app(config)
 
+t = 0
 storage = firebase.storage()
+while(True):
+    if (time.time() - t) > 1:
+        t = time.time()
+        for filename in os.listdir(directory):
+            if filename.endswith(".jpg") or filename.endswith(".png"):
+                path_on_cloud = (os.path.join(directory, filename))
+                path_local = path_on_cloud
+                storage.child(path_on_cloud).put(path_local)
+
+                os.remove(path_local)
+            else:
+                continue
 
 
-path_on_cloud = "img/dog.png"
-path_local = "img/dog.png"
-
-storage.child(path_on_cloud).put(path_local)
 
 

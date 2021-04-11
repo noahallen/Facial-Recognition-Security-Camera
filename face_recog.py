@@ -86,7 +86,7 @@ while True:
 				prev_name[name] = 0
 			elif prev_name[name] >= 6:
 				prev_name[name] = 0
-				cv2.imwrite("img/{}-{}.png".format(str(datetime.now())[:-11],name), frame)
+				cv2.imwrite("img/{}-{}.png".format(str(datetime.now())[:-10],name), frame)
 				print("{}, {}".format(datetime.now(), name))
 			else: prev_name[name] += 1
 		

@@ -8,7 +8,11 @@ import pickle
 import time
 import cv2
 from datetime import datetime
+import logging, sys
 
+logging.basicConfig()
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -97,7 +101,7 @@ while True:
 				cv2.imwrite("img/{}-{}.png".format(date,name), frame)
 				
 				time = time
-				print("{}, {}".format(date, name))
+				logger.info("PERSON FOUND: {} - DATE: {}").format(path_local) print("{}, {}".format(name, date))
 			else: prev_name[name] += 1
 		
 		# update the list of names

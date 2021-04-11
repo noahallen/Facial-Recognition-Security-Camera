@@ -3,6 +3,12 @@ import pyrebase
 import time
 import os
 
+import logging, sys
+
+logging.basicConfig()
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
 DIRECTORY = 'img/'
 config = {
     "apiKey": "AIzaSyBq1xCymVdKC2LI6EvDaavMOCW_bFfABow",
@@ -27,7 +33,7 @@ while(True):
                 path_on_cloud = (os.path.join(DIRECTORY, filename))
                 path_local = path_on_cloud
                 storage.child(path_on_cloud).put(path_local)
-
+                logger.info("File {} pushed to FIREBASE").format(path_local)
                 os.remove(path_local)
             else:
                 continue

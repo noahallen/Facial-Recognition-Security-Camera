@@ -2,6 +2,7 @@ package com.example.securitycamera;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -12,56 +13,72 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.List;
 
-/*
+
 public class MainActivity extends AppCompatActivity {
 
-    ListView ActivityLog;
-    String[] LogObjects;
-
+    private RecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        //NavigationUI.setupWithNavController(navView, navController);
-        ActivityLog = findViewById(R.id.ActivityLog);
-        LogObjects = new DateFormatSymbols().getMonths();
-        ArrayAdapter<String> ALogAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, LogObjects);
-        ListView ActivityLog = (ListView) findViewById(R.id.ActivityLog);
-        ActivityLog.setAdapter(ALogAdapter);
+        //populateUsersList();
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_visitor);
+        new FirebaseDatabaseHelper().readVisitor(new FirebaseDatabaseHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Visitor> visitors, List<String> keys) {
+                new RecyclerView_Config().setConfig(mRecyclerView, MainActivity.this, visitors, keys);
+            }
 
+            @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
+            public void DataIsUpdated() {
+
+            }
+
+            @Override
+            public void DataIsDeleted() {
+
+            }
+        });
     }
 
-}*/
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        populateUsersList();
-    }
-
-    private void populateUsersList() {
+    /*private void populateUsersList() {
         // Construct the data source
         ArrayList<Visitor> arrayOfVisitors = Visitor.getVisitors();
         // Create the adapter to convert the array to views
         VisitorAdapter adapter = new VisitorAdapter(this, arrayOfVisitors);
         // Attach the adapter to a ListView
-        ListView listView = (ListView) findViewById(R.id.ActivityLog);
-        listView.setAdapter(adapter);
-    }
+        ListView listView = (ListView) findViewById(R.id.ActivityLog); //change
+        listView.setAdapter(adapter); //change
+    }*/
 
 }
+/*
+// Read from the database
+    myRef.addValueEventListener(new ValueEventListener()) {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "Value is: " + value);
+                }
+
+        @Override
+        public void onCancelled(DatabaseError error) {
+        // Failed to read value
+        Log.w(TAG, "Failed to read value.", error.toException());
+        }
+        });
+
+ */

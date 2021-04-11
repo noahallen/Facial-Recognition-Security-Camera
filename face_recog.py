@@ -99,7 +99,7 @@ while True:
 				prev_name[name] = 0
 				date = str(datetime.now())[:-10]
 				raw = date.split(' ')
-				date = raw.join('-')
+				date = date.join(raw)
 				cv2.imwrite("img/{}-{}.png".format(date,name), frame)
 				
 				time = time

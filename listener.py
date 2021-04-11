@@ -39,7 +39,6 @@ while(True):
                 raw = filename.split('-')
 
                 img = storage.child("images/example.jpg").get_url(None)
-                print(raw)
                 name = raw[4][:-4] #split raw, take name, chop off png
                 
                 s='-'

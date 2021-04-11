@@ -33,14 +33,14 @@ fps = FPS().start()
 face_count = 0
 prev_name = {}
 temp = []
-for name in data['names']:
-	temp.append(name)
-temp.append("Unknown")	
-print(temp)
-print(type(temp))
-print(data['names'])
-print(type(data['names']))
-print(set(temp))
+# for name in data['names']:
+# 	temp.append(name)
+# temp.append("Unknown")	
+# print(temp)
+# print(type(temp))
+# print(data['names'])
+# print(type(data['names']))
+print(set(data['names']).add('Unknown'))
 
 
 

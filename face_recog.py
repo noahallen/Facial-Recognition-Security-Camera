@@ -32,8 +32,10 @@ time.sleep(2.0)
 fps = FPS().start()
 face_count = 0
 prev_name = {}
-temp = data['names']
-ppl = set(temp.append('Unknown'))
+temp = []
+for name in data['names']:
+	temp.append(name)
+temp.append("Unknown")	
 
 
  #loop over frames from the video file stream

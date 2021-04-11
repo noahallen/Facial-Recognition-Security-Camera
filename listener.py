@@ -47,7 +47,7 @@ while(True):
                 timmy = raw
 
                 data = {"img":img, "name":name, "time":timmy}
-                db.child("visitors/")push(data)
+                db.child("visitors/").push(data)
                 logger.info("File {} now availible at: {}".format(filename, img))
                 os.remove(path_local)
             else:

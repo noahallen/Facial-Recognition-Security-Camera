@@ -32,6 +32,8 @@ time.sleep(2.0)
 fps = FPS().start()
 face_count = 0
 prev_name = {}
+print(data)
+
  #loop over frames from the video file stream
 while True:
 	# grab the frame from the threaded video stream and resize it
@@ -85,6 +87,7 @@ while True:
 				prev_name[name] = 0
 				date = str(datetime.now())[:-10]
 				cv2.imwrite("img/{}-{}.png".format(date,name), frame)
+
 				print("{}, {}".format(date, name))
 			else: prev_name[name] += 1
 		

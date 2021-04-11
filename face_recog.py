@@ -39,7 +39,7 @@ temp.append("Unknown")
 temp = set(temp)
 ppl = {}
 for p in temp:
-	ppl[p] = -60
+	ppl[p] = 0
 
  #loop over frames from the video file stream
 while True:
@@ -90,7 +90,8 @@ while True:
 				name = "Unknown"
 			if name not in prev_name: 
 				prev_name[name] = 0
-			elif prev_name[name] >= 6 and (float( "{:.2f}".format(fps.elapsed())) - ppl[name]) > 60:
+			elif prev_name[name] >= 6 and (time.time() - ppl[name]) > 60:
+				ppl[name] = time.time()
 				prev_name[name] = 0
 				date = str(datetime.now())[:-10]
 				cv2.imwrite("img/{}-{}.png".format(date,name), frame)

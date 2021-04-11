@@ -72,9 +72,6 @@ while True:
 			for i in matchedIdxs:
 				name = data["names"][i]
 				counts[name] = counts.get(name, 0) + 1
-			
-
-			print(counts[name])
 			# determine the recognized face with the largest number
 			# of votes (note: in the event of an unlikely tie Python
 			# will select first entry in the dictionary)
@@ -86,8 +83,9 @@ while True:
 				prev_name[name] = 0
 			elif prev_name[name] >= 6:
 				prev_name[name] = 0
-				cv2.imwrite("img/{}-{}.png".format(str(datetime.now())[:-10],name), frame)
-				print("{}, {}".format(datetime.now(), name))
+				date = str(datetime.now())[:-10]
+				cv2.imwrite("img/{}-{}.png".format(date,name), frame)
+				print("{}, {}".format(date, name))
 			else: prev_name[name] += 1
 		
 		# update the list of names

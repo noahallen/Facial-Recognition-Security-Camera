@@ -48,21 +48,8 @@ public class RecyclerView_Config {
             mTime.setText(visitor.getTime());
             //mImg.setText(visitor.getImg());
             this.key = key;
-            //addNotification();
+
         }
-//        public void addNotification(){
-//            NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-//                    .setSmallIcon(R.mipmap.logocam1_circ_round)
-//                    .setContentTitle("hey boiii")
-//                    .setContentText("this is a test notification");
-//
-//            Intent notificationIntent =new Intent(this, RecyclerView_Config.class);
-//            PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//            builder.setContentIntent(contentIntent);
-//
-//            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//            manager.notify(0, builder.build());
-//        }
 
     }
 

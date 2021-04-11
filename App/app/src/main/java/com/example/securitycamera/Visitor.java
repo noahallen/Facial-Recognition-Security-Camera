@@ -51,29 +51,4 @@ public class Visitor {
 //        this.img = img;
 //    }
 
-
-
-//    private void addNotification(){
-//        NotificationCompat.Builder builder =new NotificationCompat.Builder(this, "VIBRATION" )
-//                .setSmallIcon(R.mipmap.logocam1_circ_round)
-//                .setContentTitle("hey boiii")
-//                .setContentText("this is a test notification");
-//
-////        Intent notificationIntent =new Intent(this, FirebaseDatabaseHelper.class);
-////        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-////        builder.setContentIntent(contentIntent);
-//
-//        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        manager.notify(0, builder.build());
-//    }
-
-
-
-//    public static ArrayList<Visitor> getVisitors(){
-//        ArrayList<Visitor> visitors = new ArrayList<Visitor>();
-//        visitors.add(new Visitor("Obama","Fri, Apr 9  12:00am"));
-//        visitors.add(new Visitor("Sahil","Sat, Apr 10  12:00am"));
-//        visitors.add(new Visitor("Noah","Sun, Apr 11  12:00am"));
-//        return visitors;
-//    }
 }

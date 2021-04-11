@@ -37,26 +37,13 @@ import android.net.Uri;
 
 
 public class MainActivity extends AppCompatActivity {
-    //private Button button;
-    //Visitor visitor;
-    //visitor = new Visitor( );
+
 
     private RecyclerView mRecyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //addNotification();
-        //populateUsersList();
-
-//        button = (Button) findViewById(R.id.tvImg);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //addNotification();
-//            }
- //       });
-
 
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_visitor);
@@ -64,17 +51,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void DataIsLoaded(List<Visitor> visitors, List<String> keys) {
                 new RecyclerView_Config().setConfig(mRecyclerView, MainActivity.this, visitors, keys);
-                //addNotification();
-            }
-
-            @Override
-            public void DataIsInserted() {
                 addNotification();
             }
 
             @Override
+            public void DataIsInserted() {
+
+            }
+
+            @Override
             public void DataIsUpdated() {
-                //addNotification();
+
             }
 
             @Override
@@ -84,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void addNotification(){
-
         NotificationManager manager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         if(Build.VERSION.SDK_INT >= 26)
         {
@@ -93,42 +79,20 @@ public class MainActivity extends AppCompatActivity {
             String description = "143";
             int importance = NotificationManager.IMPORTANCE_LOW;
             NotificationChannel channel = new NotificationChannel(id, description, importance);
-                        channel.enableLights(true);
-                        channel.enableVibration(true);//
+                        //channel.enableLights(true);
+                        //channel.enableVibration(true);
             manager.createNotificationChannel(channel);
             Notification notification = new Notification.Builder(MainActivity.this, id)
                     .setCategory(Notification.CATEGORY_MESSAGE)
                     .setSmallIcon(R.mipmap.logocam1_circ_round)
                     .setContentTitle("You've got a visitor!")
-                    .setContentText("Someone is at your door!")
+                    .setContentText(" is at your door!")
                     //.setContentIntent(pendingIntent)
                    // .setAutoCancel(true)
                     .build();
             manager.notify(1, notification);
         }
-//        else
-//        {
-//            //When sdk version is less than26
-//            Notification notification = new NotificationCompat.Builder(MainActivity.this)
-//                    .setContentTitle("This is content title")
-//                    .setContentText("This is content text")
-//                    .setContentIntent(pendingIntent)
-//                    .setSmallIcon(R.mipmap.ic_launcher)
-//                    .build();
-//            manager.notify(1,notification);
-//        }---------------------------------------------------------------------------------------
 
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-//                .setSmallIcon(R.mipmap.logocam1_circ_round)
-//                .setContentTitle("hey boiii")
-//                .setContentText("this is a test notification");
-//
-//        Intent notificationIntent =new Intent(this, MainActivity.class);
-//        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//        builder.setContentIntent(contentIntent);
-//
-//        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        manager.notify(0, builder.build());
     }
 
     public void browser1(View view){
@@ -147,31 +111,3 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
-/*private void populateUsersList() {
-        // Construct the data source
-        ArrayList<Visitor> arrayOfVisitors = Visitor.getVisitors();
-        // Create the adapter to convert the array to views
-        VisitorAdapter adapter = new VisitorAdapter(this, arrayOfVisitors);
-        // Attach the adapter to a ListView
-        ListView listView = (ListView) findViewById(R.id.ActivityLog); //change
-        listView.setAdapter(adapter); //change
-   }*/
-/*
-// Read from the database
-    myRef.addValueEventListener(new ValueEventListener()) {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d(TAG, "Value is: " + value);
-                }
-
-        @Override
-        public void onCancelled(DatabaseError error) {
-        // Failed to read value
-        Log.w(TAG, "Failed to read value.", error.toException());
-        }
-        });
-
- */

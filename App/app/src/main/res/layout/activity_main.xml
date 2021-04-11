@@ -19,18 +19,28 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="152dp"
+        android:layout_height="154dp"
         android:contentDescription="TODO"
-        app:srcCompat="@drawable/abc_vector_test" />
+        app:srcCompat="@mipmap/logocam1_circ_round"
+        tools:ignore="VectorDrawableCompat" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="382dp"
+        android:layout_height="67dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Activity Log"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_visitor"
         android:layout_width="match_parent"
-        android:layout_height="500dp" />
+        android:layout_height="425dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="379dp"
         android:layout_height="66dp"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_nav_menu">

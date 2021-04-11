@@ -27,6 +27,7 @@ public class RecyclerView_Config {
     class VisitorItemView extends RecyclerView.ViewHolder{
         private TextView mName;
         private TextView mTime;
+        //private TextView mImg;
 
         private String key;
 
@@ -35,11 +36,13 @@ public class RecyclerView_Config {
 
             mName = (TextView) itemView.findViewById(R.id.tvName);
             mTime = (TextView) itemView.findViewById(R.id.tvTime);
+            //mImg = (TextView) itemView.findViewById(R.id.tvImg);
         }
 
         public void bind (Visitor visitor, String key){
             mName.setText(visitor.getName());
             mTime.setText(visitor.getTime());
+            //mImg.setText(visitor.getImg());
             this.key = key;
         }
     }
@@ -68,5 +71,6 @@ public class RecyclerView_Config {
         public int getItemCount() {
             return mVisitorList.size();
         }
+
     }
 }

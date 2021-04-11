@@ -72,11 +72,16 @@ while True:
 			for i in matchedIdxs:
 				name = data["names"][i]
 				counts[name] = counts.get(name, 0) + 1
+			
+
 			print(counts[name])
 			# determine the recognized face with the largest number
 			# of votes (note: in the event of an unlikely tie Python
 			# will select first entry in the dictionary)
+
 			name = max(counts, key=counts.get)
+			if counts[name] <= 5:
+				name = "Unknown"
 			if name not in prev_name: 
 				prev_name[name] = 0
 			elif prev_name[name] >= 6:

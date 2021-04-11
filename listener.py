@@ -33,7 +33,7 @@ while(True):
                 path_on_cloud = (os.path.join(DIRECTORY, filename))
                 path_local = path_on_cloud
                 storage.child(path_on_cloud).put(path_local)
-                logger.info("File {} pushed to FIREBASE".format(path_local))
+                logger.info("File {} pushed to FIREBASE".format(filename))
                 os.remove(path_local)
             else:
                 continue

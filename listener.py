@@ -1,23 +1,22 @@
-from google.cloud import storage
+#!/usr/bin/env python
+import sys
+import requests
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import storage
 
-from firebase import firebase
-import os
+image_url = sys.argv[1] #we pass the url as an argument
 
-#os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="<add your credentials path>"
+cred = credentials.Certificate('Firebase/Certificate.json')
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'gs://ss-facialrecognition.appspot.com'
+})
+bucket = storage.bucket()
 
-firebase = firebase.FirebaseApplication('https://ss-facialrecognition-default-rtdb.firebaseio.com/')
-
-
-client = storage.Client()
-
-bucket = client.get_bucket('gs://ss-facialrecognition.appspot.com/')
-
-
-
-imageBlob = bucket.blob("/")
-
-imagePath = "img/dog.png"
-
-imageBlob = bucket.blob("dog.png")
-
-imageBlob.upload_from_filename(imagePath)
+image_data = requests.get(image_url).content
+blob = bucket.blob('dog.png')
+blob.upload_from_string(
+        image_data,
+        content_type='image/png'
+    )
+print(blob.public_url)

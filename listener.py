@@ -1,22 +1,25 @@
-#!/usr/bin/env python
-import sys
-import requests
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import storage
 
-image_url = "gs://ss-facialrecognition.appspot.com/img" #we pass the url as an argument
+import pyrebase
 
-cred = credentials.Certificate('Firebase/Certificate.json')
-firebase_admin.initialize_app(cred, {
-    'storageBucket': 'gs://ss-facialrecognition.appspot.com'
-})
-bucket = storage.bucket()
+Config = {
+    "apiKey": "AIzaSyBq1xCymVdKC2LI6EvDaavMOCW_bFfABow",
+    "authDomain": "ss-facialrecognition.firebaseapp.com",
+    "databaseURL": "https://ss-facialrecognition-default-rtdb.firebaseio.com",
+    "projectId": "ss-facialrecognition",
+    "storageBucket": "ss-facialrecognition.appspot.com",
+    "messagingSenderId": "52328822573",
+    "appId": "1:52328822573:web:3b251230bc3fbbf1a845a4",
+    "measurementId": "G-HC4192BM1Y"
+}
 
-image_data = requests.get(image_url).content
-blob = bucket.blob('dog.png')
-blob.upload_from_string(
-        image_data,
-        content_type='image/png'
-    )
-print(blob.public_url)
+firebase = pyrebase.initialize_app(config)
+
+storage = firebase.storage()
+
+
+path_on_cloud = "img/dog.png"
+path_local = "img/dog.png"
+
+storage.child(path_on_cloud).put(path_local)
+
+

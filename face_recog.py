@@ -33,16 +33,13 @@ fps = FPS().start()
 face_count = 0
 prev_name = {}
 temp = []
-# for name in data['names']:
-# 	temp.append(name)
-# temp.append("Unknown")	
-# print(temp)
-# print(type(temp))
-# print(data['names'])
-# print(type(data['names']))
-print(set(data['names']).add('Unknown'))
-
-
+for name in data['names']:
+	temp.append(name)
+temp.append("Unknown")	
+temp = set(temp)
+ppl = {}
+for p in temp:
+	ppl[p] = -60
 
  #loop over frames from the video file stream
 while True:
@@ -93,11 +90,12 @@ while True:
 				name = "Unknown"
 			if name not in prev_name: 
 				prev_name[name] = 0
-			elif prev_name[name] >= 6:
+			elif prev_name[name] >= 6 and fps.elapsed() - ppl[name] > 60:
 				prev_name[name] = 0
 				date = str(datetime.now())[:-10]
 				cv2.imwrite("img/{}-{}.png".format(date,name), frame)
-
+				
+				time = time
 				print("{}, {}".format(date, name))
 			else: prev_name[name] += 1
 		

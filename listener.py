@@ -40,12 +40,14 @@ while(True):
 
                 img = storage.child("images/example.jpg").get_url(None)
                 print(raw)
-                name = raw[4][:-3] #split raw, take name, chop off png
+                name = raw[4][:-4] #split raw, take name, chop off png
                 
-                timmy = raw[:4]
+                s='-'
+                raw = s.join(raw[:4])
+                timmy = raw
 
                 data = {"img":img, "name":name, "time":timmy}
-                db.push(data)
+                db.child("visitors/")push(data)
                 logger.info("File {} now availible at: {}".format(filename, img))
                 os.remove(path_local)
             else:

@@ -45,6 +45,7 @@ while(True):
 
                 data = {"img":img, "name":name, "time":time}
                 db.push(data)
+                logger.info("File {} now availible at: {}".format(filename, img))
                 os.remove(path_local)
             else:
                 continue

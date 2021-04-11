@@ -1,7 +1,7 @@
 
 import pyrebase
 
-Config = {
+config = {
     "apiKey": "AIzaSyBq1xCymVdKC2LI6EvDaavMOCW_bFfABow",
     "authDomain": "ss-facialrecognition.firebaseapp.com",
     "databaseURL": "https://ss-facialrecognition-default-rtdb.firebaseio.com",

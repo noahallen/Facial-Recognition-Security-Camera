@@ -36,6 +36,7 @@ temp = []
 for name in data['names']:
 	temp.append(name)
 temp.append("Unknown")	
+print(temp)
 
 
  #loop over frames from the video file stream

@@ -98,6 +98,8 @@ while True:
 				ppl[name] = time.time()
 				prev_name[name] = 0
 				date = str(datetime.now())[:-10]
+				raw = date.split(' ')
+				date = raw.join('-')
 				cv2.imwrite("img/{}-{}.png".format(date,name), frame)
 				
 				time = time

@@ -34,6 +34,16 @@ while(True):
                 path_local = path_on_cloud
                 storage.child(path_on_cloud).put(path_local)
                 logger.info("File {} pushed to FIREBASE".format(filename))
+                
+                # raw = filename.split('-')
+
+                # img = storage.child("images/example.jpg").get_url()
+                # name = raw[3][:-3] #split raw, take name, chop off png
+                
+                # time = raw[0]
+
+
+
                 os.remove(path_local)
             else:
                 continue

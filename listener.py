@@ -5,7 +5,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import storage
 
-image_url = sys.argv[1] #we pass the url as an argument
+image_url = "gs://ss-facialrecognition.appspot.com/img" #we pass the url as an argument
 
 cred = credentials.Certificate('Firebase/Certificate.json')
 firebase_admin.initialize_app(cred, {

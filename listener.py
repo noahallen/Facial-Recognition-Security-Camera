@@ -38,7 +38,7 @@ while(True):
                 
                 raw = filename.split('-')
 
-                img = storage.child("images/example.jpg").get_url()
+                img = storage.child("images/example.jpg").get_url(None)
                 name = raw[4][:-3] #split raw, take name, chop off png
                 
                 time = raw[:4]

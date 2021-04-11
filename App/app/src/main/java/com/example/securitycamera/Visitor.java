@@ -1,5 +1,13 @@
 package com.example.securitycamera;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
 import java.util.ArrayList;
 
 public class Visitor {
@@ -19,6 +27,7 @@ public class Visitor {
     }
 
     public String getName(){
+       // addNotification();
         return name;
     }
 
@@ -41,6 +50,24 @@ public class Visitor {
 //    public void setImg(){
 //        this.img = img;
 //    }
+
+
+
+//    private void addNotification(){
+//        NotificationCompat.Builder builder =new NotificationCompat.Builder(this, "VIBRATION" )
+//                .setSmallIcon(R.mipmap.logocam1_circ_round)
+//                .setContentTitle("hey boiii")
+//                .setContentText("this is a test notification");
+//
+////        Intent notificationIntent =new Intent(this, FirebaseDatabaseHelper.class);
+////        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+////        builder.setContentIntent(contentIntent);
+//
+//        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//        manager.notify(0, builder.build());
+//    }
+
+
 
 //    public static ArrayList<Visitor> getVisitors(){
 //        ArrayList<Visitor> visitors = new ArrayList<Visitor>();

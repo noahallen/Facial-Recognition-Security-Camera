@@ -42,9 +42,10 @@ while(True):
                 print(raw)
                 name = raw[4][:-4] #split raw, take name, chop off png
                 s = ' '
+                
                 name = name.split('_')
                 name = s.join(name)
-                
+                print(name)
                 s='-'
                 raw = s.join(raw[:4])
                 timmy = raw

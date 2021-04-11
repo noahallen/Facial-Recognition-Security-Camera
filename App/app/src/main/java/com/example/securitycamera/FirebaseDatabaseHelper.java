@@ -1,8 +1,15 @@
 package com.example.securitycamera;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirebaseDatabaseHelper {
+public class FirebaseDatabaseHelper{
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReferenceVisitior;
     private List<Visitor> visitors = new ArrayList<>();
@@ -30,7 +37,9 @@ public class FirebaseDatabaseHelper {
         mReferenceVisitior = mDatabase.getReference("visitors"); //firebase database name (visitors)
     }
 
+
     public void readVisitor(final DataStatus dataStatus){
+
         mReferenceVisitior.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -48,6 +57,9 @@ public class FirebaseDatabaseHelper {
             public void onCancelled(@NonNull DatabaseError error){
 
             }
+
         });
     }
+
+
 }

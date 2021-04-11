@@ -16,6 +16,9 @@
     //tools:layout_editor_absoluteY="66dp"
 
 
+
+
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
@@ -44,6 +47,7 @@
         android:layout_height="66dp"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_nav_menu">
+
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

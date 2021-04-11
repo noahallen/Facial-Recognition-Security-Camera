@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="View Image"
+        android:onClick="browser1"
         app:backgroundTint="#777373" />
 
 </LinearLayout>

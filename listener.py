@@ -42,9 +42,9 @@ while(True):
                 print(raw)
                 name = raw[4][:-3] #split raw, take name, chop off png
                 
-                time = raw[:4]
+                timmy = raw[:4]
 
-                data = {"img":img, "name":name, "time":time}
+                data = {"img":img, "name":name, "time":timmy}
                 db.push(data)
                 logger.info("File {} now availible at: {}".format(filename, img))
                 os.remove(path_local)

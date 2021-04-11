@@ -5,12 +5,12 @@ import os
 
 #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="<add your credentials path>"
 
-firebase = firebase.FirebaseApplication('https://console.firebase.google.com/project/ss-facialrecognition/storage/ss-facialrecognition.appspot.com/files')
+firebase = firebase.FirebaseApplication('https://ss-facialrecognition-default-rtdb.firebaseio.com/')
 
 
 client = storage.Client()
 
-bucket = client.get_bucket('img/')
+bucket = client.get_bucket('gs://ss-facialrecognition.appspot.com/')
 
 
 

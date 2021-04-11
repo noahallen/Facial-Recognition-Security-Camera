@@ -25,6 +25,7 @@ firebase = pyrebase.initialize_app(config)
 
 t = 0
 storage = firebase.storage()
+db = firebase.database()
 while(True):
     if (time.time() - t) > 1:
         t = time.time()
@@ -35,15 +36,15 @@ while(True):
                 storage.child(path_on_cloud).put(path_local)
                 logger.info("File {} pushed to FIREBASE".format(filename))
                 
-                # raw = filename.split('-')
+                raw = filename.split('-')
 
-                # img = storage.child("images/example.jpg").get_url()
-                # name = raw[3][:-3] #split raw, take name, chop off png
+                img = storage.child("images/example.jpg").get_url()
+                name = raw[4][:-3] #split raw, take name, chop off png
                 
-                # time = raw[0]
+                time = raw[:4]
 
-
-
+                data = {"img":img, "name":name, "time":time}
+                db.push(data)
                 os.remove(path_local)
             else:
                 continue

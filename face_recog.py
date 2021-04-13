@@ -34,6 +34,8 @@ vs = VideoStream(src=0).start()
 time.sleep(2.0)
 # start the FPS counter
 fps = FPS().start()
+
+frame_number = 0
 face_count = 0
 prev_name = {}
 temp = []
@@ -46,12 +48,13 @@ for p in temp:
 	ppl[p] = 0
 
  #loop over frames from the video file stream
+
 while True:
 	# grab the frame from the threaded video stream and resize it
 	# to 500px (to speedup processing)
 	frame = vs.read()
 	frame = imutils.resize(frame, width=500)
-	
+	if frame_number % 10: continue
 	# convert the input frame from (1) BGR to grayscale (for face
 	# detection) and (2) from BGR to RGB (for face recognition)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
